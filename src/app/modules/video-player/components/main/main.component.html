@@ -1,0 +1,4 @@
+<div class="video-player">
+  <video-screen class="videoScreen" [stream]="playingStream"></video-screen>
+  <video-list (onChangeStreamSrc)="onChangeStreamSrc($event)"></video-list>
+</div>

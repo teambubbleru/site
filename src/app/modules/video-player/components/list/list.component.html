@@ -1,0 +1,19 @@
+<div class="video-list">
+  <button mat-stroked-button class="button -left">
+    <div fxFlex="100%" fxLayout="column" fxFlexAlign="center" fxLayoutAlign="center">
+      <mat-icon>chevron_left</mat-icon>
+    </div>
+  </button>
+  <div fxFlex="100%" class="stream-list" fxFlexAlign="center">
+    <ul fxLayout="row" fxFlexAlign="center" fxLayoutAlign="start">
+      <li *ngFor="let stram of strems">
+        <video src="{{stram}}" autoplay loop (click)="changeStreamSrc($event)"></video>
+      </li>
+    </ul>
+  </div>
+  <button mat-stroked-button class="button -right">
+    <div fxFlex="100%" fxLayout="column" fxFlexAlign="center" fxLayoutAlign="center">
+      <mat-icon>chevron_right</mat-icon>
+    </div>
+  </button>
+</div>

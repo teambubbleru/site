@@ -1,8 +1,0 @@
-<div>
-  <app-video src="{{playStreamSrc}}" time="{{timePlay}}"></app-video>
-  <ul class="video-list">
-    <li *ngFor="let stream of streams; let i = index">
-      <video src="{{stream}}" (click)="onClickVideo($event)" autoplay loop></video>
-    </li>
-  </ul>
-</div>

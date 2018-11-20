@@ -1,0 +1,31 @@
+<div #videoContainer class="video-screen">
+  <video #mainVideo class="mainVideo" (click)="togglePlay()" (dblclick)="toggleFullScreen()"></video>
+  <div class="controls" fxFlex="100%" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-icon-button (click)="togglePlay()" [disabled]="videoElement.nativeElement.srcObject === null">
+      <mat-icon *ngIf="isPlay">pause</mat-icon>
+      <mat-icon *ngIf="!isPlay">play_circle_outline</mat-icon>
+    </button>
+    <mat-slider fxFlex="100%"
+                [max]="maxTime"
+                [min]="0"
+                [step]="1">
+    </mat-slider>
+    <div #soundVolumeControls fxLayout="row" fxLayoutAlign="start center">
+      <button mat-icon-button (click)="toggleSound()">
+        <mat-icon *ngIf="soundVolume > 0">volume_up</mat-icon>
+        <mat-icon *ngIf="soundVolume == 0">volume_off</mat-icon>
+      </button>
+      <mat-slider [value]="(soundVolume * 100)|number:0"
+                  (change)="onChangeSoundVolume($event)"
+                  [thumbLabel]="true"
+                  [max]="100"
+                  [min]="0"
+                  [step]="1">
+      </mat-slider>
+    </div>
+    <button mat-icon-button (click)="toggleFullScreen()">
+      <mat-icon *ngIf="!isFullScreen">fullscreen</mat-icon>
+      <mat-icon *ngIf="isFullScreen">fullscreen_exit</mat-icon>
+    </button>
+  </div>
+</div>
