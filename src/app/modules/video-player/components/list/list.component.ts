@@ -17,7 +17,8 @@ export class ListComponent implements OnInit, AfterViewInit {
       '/videos/big_buck_bunny.ogv',
       '/videos/trailer.mp4',
       '/videos/Joren_Falls_Izu_Japan.webm',
-      '/videos/Big Buck Bunny-YE7VzlLtp-4.mp4'
+      '/videos/Big Buck Bunny-YE7VzlLtp-4.mp4',
+      '//std.aniland.org/2147410323.mp4?md5=DSGCIC94FEVmlwAVOM3Pig&time=1542745418'
     ];
   }
 
