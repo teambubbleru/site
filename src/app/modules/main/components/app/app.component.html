@@ -1,1 +1,61 @@
-<video-player></video-player>
+<video-player fxFlexFill="" [streams]='[
+	{
+		"type": 1,
+		"image": {
+			"src" : "https://upload.wikimedia.org/wikipedia/ru/thumb/8/8e/%D0%9F%D0%BE%D1%81%D1%82%D0%B5%D1%80_%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0_%C2%AB%D0%A2%D1%80%D0%BE%D0%BD._%D0%9D%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D0%B8%D0%B5%C2%BB.jpg/200px-%D0%9F%D0%BE%D1%81%D1%82%D0%B5%D1%80_%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0_%C2%AB%D0%A2%D1%80%D0%BE%D0%BD._%D0%9D%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D0%B8%D0%B5%C2%BB.jpg"
+		},
+		"labels" : {
+			"name": "Tron"
+		},
+		"quality": [
+			{
+				"name": "320p",
+				"value": "320"
+			},
+			{
+				"name": "480p",
+				"value": "480"
+			},
+			{
+				"name": "720p",
+				"value": "720"
+			},
+			{
+				"name": "1080p",
+				"value": "1080"
+			}
+		]
+	},
+	{
+		"type": 2,
+		"image": {
+			"src" : "https://avatars.yandex.net/get-music-content/139444/c1582a25.a.5778040-1/200x200"
+		},
+		"labels" : {
+			"name": "Afterlife",
+			"album": "Arrival",
+			"artist": "Andy James"
+		}
+	},
+	{
+		"type": 3,
+		"quality": [
+			{
+				"name": "320p",
+				"value": "320"
+			},
+			{
+				"name": "480p",
+				"value": "480"
+			},
+			{
+				"name": "720p",
+				"value": "720"
+			},
+			{
+				"name": "1080p",
+				"value": "1080"
+			}
+		]
+	}
+]'></video-player>

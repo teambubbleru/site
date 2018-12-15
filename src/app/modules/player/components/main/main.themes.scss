@@ -1,0 +1,83 @@
+@import "variables.themes";
+
+.video-player {
+  &.-theme {
+
+    ::ng-deep {
+      .mat-drawer-container {
+        background: unset;
+      }
+    }
+
+    &.-dark {
+      background-color: $black;
+
+      ::ng-deep {
+        .mat-drawer {
+          background-color: $black;
+          border-right: 1px solid $gray-light-translucent;
+        }
+
+        .play-list-container {
+          border-top: 1px solid $gray-light-translucent;
+          background-color: $gray-translucent;
+
+          &::-webkit-scrollbar-track {
+            background-color: rgba(0,0,0,0);
+          }
+
+          &::-webkit-scrollbar {
+            background-color: rgba(0,0,0,0);
+          }
+
+          &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: $gray-light-translucent;
+          }
+        }
+
+        .mat-progress-spinner circle, .mat-spinner circle {
+          stroke: $yellow;
+        }
+
+        .stream-object-container {
+          border-color: $yellow;
+          color: $white;
+
+          .button-play {
+            color: $black;
+
+            .mat-icon {
+              color: $yellow;
+            }
+          }
+        }
+
+        live {
+          color: $red;
+        }
+      }
+
+      .controls {
+        ::ng-deep {
+          .controls {
+            border-top: 1px solid $gray-light-translucent;
+            background-color: $gray-translucent;
+            color: $white!important;
+
+            ::ng-deep {
+              .mat-select-value-text {
+                color: $white!important;
+              }
+
+              .mat-select-arrow {
+                color: $white!important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

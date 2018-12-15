@@ -1,0 +1,18 @@
+.play-list-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 5px;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &.-horizontal {
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+  }
+}

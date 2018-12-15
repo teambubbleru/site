@@ -1,0 +1,76 @@
+<div #controls class="controls"
+     [@showHide]="isShow ? 'show' : 'hide'"
+     (@showHide.done)="onAnimationDone()"
+     (mouseover)="onMouseOverToControls()"
+     (mouseleave)="onMouseOutFromControls()"
+     fxFlex="100%"
+     fxLayout="column"
+     fxLayoutAlign="start center">
+  <div class="progress-container" *ngIf="isShowTimeProgress && durationStream > 0">
+    <mat-slider fxFlex="100%" fxLayout="row" fxLayoutAlign="start center"
+                [disabled]="opacity === 0"
+                [value]="currentStreamTime"
+                [max]="durationStream"
+                [min]="0"
+                [step]="1"
+                [displayWith]="getTimeFormatted.bind(this)"
+                (change)="onChangeTimeProgress.emit($event); currentStreamTime = $event.value"
+                [thumbLabel]="true">
+    </mat-slider>
+  </div>
+
+  <div class="button-container" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-icon-button *ngIf="isShowPlayButton" (click)="onPlayClick.emit($event)" [disabled]="opacity === 0">
+      <mat-icon *ngIf="!isPlay">play_circle_outline</mat-icon>
+      <mat-icon *ngIf="isPlay">pause</mat-icon>
+    </button>
+
+    <button mat-icon-button *ngIf="isShowPlayListButton" (click)="onTogglePlayListClick.emit($event)" fxHide.xs>
+      <mat-icon>featured_play_list</mat-icon>
+    </button>
+
+    <div #soundVolumeControls *ngIf="isShowSoundControl && isDesktop" fxHide.xs class="sound" fxLayout="row" fxLayoutAlign="start center">
+      <button mat-icon-button (click)="onToggleSound()">
+        <mat-icon *ngIf="currentSoundValue > 0">volume_up</mat-icon>
+        <mat-icon *ngIf="currentSoundValue == 0">volume_off</mat-icon>
+      </button>
+
+      <mat-slider #soundVolumeSlider [value]="currentSoundValue"
+                  [max]="100"
+                  [min]="0"
+                  (change)="onChangeSoundVolume.emit($event); currentSoundValue = $event.value"
+                  [thumbLabel]="true"
+                  [disabled]="isDisableSoundVolumeSlider || opacity === 0"
+                  [step]="1">
+      </mat-slider>
+    </div>
+
+    <div class="times" *ngIf="isShowTimer && (durationStream > 0 || currentStreamTime > 0)" fxLayout="row">
+      <span *ngIf="currentStreamTime > 0 || durationStream > 0">{{ getTimeFormatted(currentStreamTime) }}</span>
+      <div *ngIf="durationStream > 0">
+        <span>/</span>
+        <span>{{ getTimeFormatted(durationStream) }}</span>
+      </div>
+    </div>
+
+    <span fxFlex></span>
+    
+    <mat-form-field *ngIf="isShowQualitySelect && qualityList.length > 0">
+      <mat-select (change)="onChangeQuality.emit($event)"
+                  [value]="qualityList.length > 0 ? qualityList[0].value : 0">
+        <mat-option *ngFor="let quality of qualityList;" [value]="quality.value">
+          {{ quality.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-icon-button *ngIf="isShowSettingButton" (click)="onSettingsClick.emit($event)">
+      <mat-icon>settings</mat-icon>
+    </button>
+
+    <button mat-icon-button *ngIf="isShowFullScreenButton" (click)="onToggleFullScreen.emit($event)">
+      <mat-icon *ngIf="!isFullScreen">fullscreen</mat-icon>
+      <mat-icon *ngIf="isFullScreen">fullscreen_exit</mat-icon>
+    </button>
+  </div>
+</div>

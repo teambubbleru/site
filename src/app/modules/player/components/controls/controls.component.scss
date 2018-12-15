@@ -1,0 +1,49 @@
+.controls {
+  .progress-container {
+    width: 100%;
+    padding: 0 10px;
+
+    ::ng-deep {
+      .mat-slider {
+        padding: 0 10px;
+        height: 35px;
+
+        .mat-slider-thumb-label {
+          padding: 10px;
+          top: -57px;
+          right: -23px;
+        }
+      }
+    }
+  }
+
+  .button-container {
+    width: 100%;
+
+    .sound {
+      .mat-slider {
+        margin-right: 5px;
+      }
+    }
+
+    .times {
+      span {
+        padding: 0 2px;
+      }
+    }
+
+    .mat-form-field {
+      width: 80px;
+
+      .mat-select-value {
+        text-align: center;
+      }
+    }
+
+    ::ng-deep {
+      .mat-select-value {
+        text-align: center;
+      }
+    }
+  }
+}

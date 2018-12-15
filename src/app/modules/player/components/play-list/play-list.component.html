@@ -1,0 +1,10 @@
+<div *ngIf="streams.length > 0" class="play-list-container" fxFlex=""
+     fxLayout="{{horizontal ? 'row' : 'column'}}" fxLayoutAlign="start center"
+     [ngClass]="{'-horizontal': horizontal}">
+
+  <stream-object class="stream-object" *ngFor="let stream of streams"
+                 (click)="onClickStreamObject.emit(stream)"
+                 [isHorizontal]="horizontal"
+                 [streamObject]="stream">
+  </stream-object>
+</div>

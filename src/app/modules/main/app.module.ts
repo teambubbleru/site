@@ -3,20 +3,22 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './components/app/app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {VideoPlayerModule} from "../video-player/video-player.module";
+import {PlayerModule} from "../player/player.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
 
-        VideoPlayerModule,
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+    FlexLayoutModule,
+    PlayerModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -1,0 +1,46 @@
+<div #videoPlayer class="video-player -theme -{{ theme }}" fxFlex="100%" fxFlexFill="" fxLayout="column"
+     (swiperight)="sideNavLeft.open()" (swipeleft)="sideNavLeft.close()">
+    <mat-drawer-container autosize>
+
+        <mat-drawer #sideNavLeft fxLayout="column">
+            <play-list #verticalPlayList fxFlex="100%"
+                       (onClickStreamObject)="onClickStreamObject($event)">
+            </play-list>
+        </mat-drawer>
+
+        <mat-drawer #sideNavRight position="end">
+            Main content
+        </mat-drawer>
+
+        <mat-drawer-content fxFlex="" fxLayout="row" fxLayoutAlign="start start">
+            <screen #mainVideo fxFlex="100%"
+                    [(currentStreamTime)]="controls.currentStreamTime"
+                    (dblclick)="toggleFullScreen()"
+                    (loadChange)="isShowLoader = $event">
+            </screen>
+
+            <div *ngIf="isShowLoader" class="buffer-sniper" fxLayout="row" fxLayoutAlign="center center">
+                <mat-spinner></mat-spinner>
+            </div>
+
+            <live *ngIf="isShowLife"></live>
+
+            <controls #controls class="controls"
+                      [isFullScreen]="isFullScreen"
+                      [isShowPlayListButton]="isFullScreen"
+                      [isShowPlayButton]="isShowPlayButton"
+                      [isShowSettingButton]="false"
+                      [durationStream]="mainVideo.durationStream"
+                      (onChangeSoundVolume)="mainVideo.soundVolume = $event.value"
+                      (onToggleFullScreen)="toggleFullScreen()"
+                      (onTogglePlayListClick)="sideNavLeft.toggle()"></controls>
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+    <play-list #horizontalPlayList fxFlex="none"
+               (onClickStreamObject)="onClickStreamObject($event)"
+               [ngClass]="{'hidden' : isFullScreen}"
+               [horizontal]="true">
+    </play-list>
+</div>
